@@ -352,8 +352,4 @@ $(document).ready(function () {
 			update_temperature_scale();
 		}
 	);
-
-
-
-
 });

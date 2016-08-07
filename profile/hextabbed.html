@@ -28,6 +28,7 @@ Special thanks to StPug on homebrewtalk for helping out creating this.
 <title>STC-1000+ EEPROM Hex Editor</title>
 <link rel="stylesheet" href="jquery-ui.min.css">
 <link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="grid.css">
 <script src="jquery.min.js"></script>
 <script src="jquery-ui.min.js"></script>
 <script src="jquery.flot.min.js"></script>
@@ -84,6 +85,109 @@ prompted to open it directly.
 
 <br />
 
+<!-- <div class="row">
+	<div class="column column-12"><h2>Configuration Parameters</h2></div>
+</row>
+<div class="row">
+	<div class="row">
+		<div class="column column-4">
+			<label for="menu_param_SP">Setpoint (SP) </label>
+			<input class="temperature" type="text" id="menu_param_SP" name="menu_param_SP" maxlength="4" size="4" autocomplete="off" value="0.0"><span class="tscale">[&deg;C]</span>
+		</div>
+		<div class="column column-4">
+			<label for="menu_param_hy">Hysteresis (hy) </label>
+			<input class="tempdiff" type="text" id="menu_param_hy" name="menu_param_hy" maxlength="4" size="4" autocomplete="off" value="0.0"><span class="tscale">[&deg;C]</span>
+		</div>
+		<div class="column column-4">
+			<label for="menu_param_hy2">Hysteresis Probe 2 (hy2) </label>
+			<input class="tempdiff en_probe2_subversion" type="text" id="menu_param_hy2" name="menu_param_hy2" maxlength="4" size="4" autocomplete="off" disabled value="0.0"><span class="tscale">[&deg;C]</span>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="column column-4">
+		<label for="menu_param_SP">Temperature Correction (tc) </label>
+		<input class="tempdiff" type="text" id="menu_param_tc" name="menu_param_tc" maxlength="4" size="4" autocomplete="off" value="0.0"><span class="tscale">[&deg;C]</span>
+	</div>
+	<div class="column column-4">
+		<label for="menu_param_SP">Temperature Correction (tc) </label>
+		<input class="tempdiff" type="text" id="menu_param_tc" name="menu_param_tc" maxlength="4" size="4" autocomplete="off" value="0.0"><span class="tscale">[&deg;C]</span>
+	</div>
+	<div class="column column-4">
+		<label for="menu_param_SP">Temperature Correction (tc) </label>
+		<input class="tempdiff" type="text" id="menu_param_tc" name="menu_param_tc" maxlength="4" size="4" autocomplete="off" value="0.0"><span class="tscale">[&deg;C]</span>
+	</div>
+</div>
+<div class="row">
+    <div class="column column-2"></div>
+	<div class="column column-2"></div>
+	<div class="column column-2"></div>
+	<div class="column column-2"></div>
+	<div class="column column-2"></div>
+    <div class="column column-2"></div>
+</div> -->
+
+<div class="row">
+	<div class="column column-12">
+		<div class="column column-2 program">
+			<h3>Program 0 (P0)</h3>
+			<h5>
+				Step: Temp / Duration
+			</h5>
+			<div>
+				<span class="step">0:</span>
+				<input class="temperature recalc" type="text" id="sp0_0" name="sp0_0" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 0"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_0" name="dh0_0" maxlength="3" size="3" autocomplete="off" value="72" title="Duration 0"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">1:</span>
+				<input class="temperature recalc" type="text" id="sp0_1" name="sp0_1" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 1"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_1" name="dh0_1" maxlength="3" size="3" autocomplete="off" value="12" title="Duration 1"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">2:</span>
+				<input class="temperature recalc" type="text" id="sp0_2" name="sp0_2" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 2"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_2" name="dh0_2" maxlength="3" size="3" autocomplete="off" value="72" title="Duration 2"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">3:</span>
+				<input class="temperature recalc" type="text" id="sp0_3" name="sp0_3" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 3"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_3" name="dh0_3" maxlength="3" size="3" autocomplete="off" value="60" title="Duration 3"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">4:</span>
+				<input class="temperature recalc" type="text" id="sp0_4" name="sp0_4" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 4"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_4" name="dh0_4" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 4"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">5:</span>
+				<input class="temperature recalc" type="text" id="sp0_5" name="sp0_5" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 5"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_5" name="dh0_5" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 5"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">6:</span>
+				<input class="temperature recalc" type="text" id="sp0_6" name="sp0_6" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 6"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_6" name="dh0_6" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 6"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">7:</span>
+				<input class="temperature recalc" type="text" id="sp0_7" name="sp0_7" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 7"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_7" name="dh0_7" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 7"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">8:</span>
+				<input class="temperature recalc" type="text" id="sp0_8" name="sp0_8" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 8"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_8" name="dh0_8" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 8"><span class="durscale"> hr</span>
+			</div>
+			<div>
+				<span class="step">9:</span>
+				<input class="temperature recalc" type="text" id="sp0_9" name="sp0_9" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 9"/><span class="tscale">&deg;C</span>
+				<input class="duration recalc" type="text" id="dh0_9" name="dh0_9" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 9"><span class="durscale"> hr</span>
+			</div>
+		</div>
+	</div>
+</row>
+
 <span id="stc1000p_eeprom_editor" class="show_version show_version_minute" style="display: none">
 	<table>
 		<thead>
@@ -101,25 +205,56 @@ prompted to open it directly.
 			<tr>
 				<td valign="top">
 					<table>
-						<tr><td>sp0:</td><td><input class="temperature recalc" type="text" id="sp0_0" name="sp0_0" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 0"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh0:</td><td><input class="duration recalc" type="text" id="dh0_0" name="dh0_0" maxlength="3" size="4" autocomplete="off" value="72" title="Duration 0"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp1:</td><td><input class="temperature recalc" type="text" id="sp0_1" name="sp0_1" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 1"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh1:</td><td><input class="duration recalc" type="text" id="dh0_1" name="dh0_1" maxlength="3" size="4" autocomplete="off" value="12" title="Duration 1"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp2:</td><td><input class="temperature recalc" type="text" id="sp0_2" name="sp0_2" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 2"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh2:</td><td><input class="duration recalc" type="text" id="dh0_2" name="dh0_2" maxlength="3" size="4" autocomplete="off" value="72" title="Duration 2"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp3:</td><td><input class="temperature recalc" type="text" id="sp0_3" name="sp0_3" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 3"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh3:</td><td><input class="duration recalc" type="text" id="dh0_3" name="dh0_3" maxlength="3" size="4" autocomplete="off" value="60" title="Duration 3"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp4:</td><td><input class="temperature recalc" type="text" id="sp0_4" name="sp0_4" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 4"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh4:</td><td><input class="duration recalc" type="text" id="dh0_4" name="dh0_4" maxlength="3" size="4" autocomplete="off" value="0" title="Duration 4"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp5:</td><td><input class="temperature recalc" type="text" id="sp0_5" name="sp0_5" maxlength="4" size="4" autocomplete="off" value="0.0" title="Setpoint 5"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh5:</td><td><input class="duration recalc" type="text" id="dh0_5" name="dh0_5" maxlength="3" size="4" autocomplete="off" value="0" title="Duration 5"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp6:</td><td><input class="temperature recalc" type="text" id="sp0_6" name="sp0_6" maxlength="4" size="4" autocomplete="off" value="0.0" title="Setpoint 6"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh6:</td><td><input class="duration recalc" type="text" id="dh0_6" name="dh0_6" maxlength="3" size="4" autocomplete="off" value="0" title="Duration 6"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp7:</td><td><input class="temperature recalc" type="text" id="sp0_7" name="sp0_7" maxlength="4" size="4" autocomplete="off" value="0.0" title="Setpoint 7"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh7:</td><td><input class="duration recalc" type="text" id="dh0_7" name="dh0_7" maxlength="3" size="4" autocomplete="off" value="0" title="Duration 7"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp8:</td><td><input class="temperature recalc" type="text" id="sp0_8" name="sp0_8" maxlength="4" size="4" autocomplete="off" value="0.0" title="Setpoint 8"/><span class="tscale">[&deg;C]</span></td></tr>
-						<tr><td>dh8:</td><td><input class="duration recalc" type="text" id="dh0_8" name="dh0_8" maxlength="3" size="4" autocomplete="off" value="0" title="Duration 8"><span class="durscale">[h]</span></td></tr>
-						<tr><td>sp9:</td><td><input class="temperature recalc" type="text" id="sp0_9" name="sp0_9" maxlength="4" size="4" autocomplete="off" value="0.0" title="Setpoint 9"/><span class="tscale">[&deg;C]</span></td></tr>
+						<tr><td>
+							0:
+							<input class="temperature recalc" type="text" id="sp0_0" name="sp0_0" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 0"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_0" name="dh0_0" maxlength="3" size="3" autocomplete="off" value="72" title="Duration 0"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							1:
+							<input class="temperature recalc" type="text" id="sp0_1" name="sp0_1" maxlength="4" size="4" autocomplete="off" value="19.0" title="Setpoint 1"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_1" name="dh0_1" maxlength="3" size="3" autocomplete="off" value="12" title="Duration 1"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							2:
+							<input class="temperature recalc" type="text" id="sp0_2" name="sp0_2" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 2"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_2" name="dh0_2" maxlength="3" size="3" autocomplete="off" value="72" title="Duration 2"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							3:
+							<input class="temperature recalc" type="text" id="sp0_3" name="sp0_3" maxlength="4" size="4" autocomplete="off" value="21.0" title="Setpoint 3"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_3" name="dh0_3" maxlength="3" size="3" autocomplete="off" value="60" title="Duration 3"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							4:
+							<input class="temperature recalc" type="text" id="sp0_4" name="sp0_4" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 4"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_4" name="dh0_4" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 4"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							5:
+							<input class="temperature recalc" type="text" id="sp0_5" name="sp0_5" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 5"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_5" name="dh0_5" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 5"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							6:
+							<input class="temperature recalc" type="text" id="sp0_6" name="sp0_6" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 6"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_6" name="dh0_6" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 6"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							7:
+							<input class="temperature recalc" type="text" id="sp0_7" name="sp0_7" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 7"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_7" name="dh0_7" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 7"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							8:
+							<input class="temperature recalc" type="text" id="sp0_8" name="sp0_8" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 8"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_8" name="dh0_8" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 8"><span class="durscale">hr</span>
+						</td></tr>
+						<tr><td>
+							9:
+							<input class="temperature recalc" type="text" id="sp0_9" name="sp0_9" maxlength="4" size="4" autocomplete="off" value="1.0" title="Setpoint 9"/><span class="tscale">&deg;C</span> /
+						    <input class="duration recalc" type="text" id="dh0_9" name="dh0_9" maxlength="3" size="3" autocomplete="off" value="0" title="Duration 9"><span class="durscale">hr</span>
+						</td></tr>
 					</table>
 				</td>
 				<td valign="top">

@@ -1,0 +1,108 @@
+doctype transitional
+html(xmlns='http://www.w3.org/1999/xhtml')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=iso-8859-1')
+    title STC-1000+ EEPROM Hex Editor
+    link(rel='stylesheet', href='jquery-ui.min.css')
+    link(rel='stylesheet', href='style.css')
+    link(rel='stylesheet', href='grid.css')
+    script(src='jquery.min.js')
+    script(src='jquery-ui.min.js')
+    script(src='jquery.flot.min.js')
+    script(src='jquery.flot.axislabels.js')
+    script(src='stc1000p.js')
+    script(src='script.js')
+  body
+    h2 About
+    h3 STC-1000+ Profile editor and sketch generator
+    p.quote
+      | © 2014 Mats Staffansson
+      br
+      br
+      | This page is a part of the
+      a(href='https://github.com/matsstaff/stc1000p') STC-1000+ project.
+      br
+      br
+      | Please visit the project page for more information.
+      br
+      br
+      | The purpose of this page it to visualize how the setpoint will be updated over time, when running a profile (with the specified settings) on an STC-1000+ modified thermostat.
+      br
+      br
+      | It will accurately show substeps when ramping is enabled.  Note that this (obviously) only shows the calculated setpoints, not the actual temperature of the
+      | fermenting vessel. All 6 profiles can be edited, but only one will be shown at a time. To switch between which profile is shown, click on the
+      | 'Pr0' to 'Pr5' links. It is also possible to directly switch between Fahrenheit and Celsius mode.
+      br
+      br
+      | Additionally, the parameters can be exported and downloaded as a sketch for direct upload to the Arduino and STC-1000. To do so, simply press
+      | one of the 'Download sketch' button at the bottom of the page when you are done editing. Save the file and open with the Arduino IDE if not
+      | prompted to open it directly.
+    br
+    input#savecookie(type='button', name='save', value='Save settings to cookie', onclick='save_cookie();', title='Save the current settings to a cookie in your browser')
+    input#restorecookie(type='button', name='restore', value='Restore settings from cookie', onclick='restore_cookie();', title='Restore settings from a previously saved cookie')
+    br
+    h3 Select sketch version
+    table#stc1000p_version_selector_table
+      tr
+        td(valign='top')
+          input#stc1000p_version_1(type='radio', name='stc1000p_version', value='')
+          label(for='stc1000p_version_1')  STC-1000+
+          br
+          input#stc1000p_version_2(type='radio', name='stc1000p_version', value='_minute')
+          label(for='stc1000p_version_2')  STC-1000+ (minute timebase)
+          br
+          input#stc1000p_version_3(type='radio', name='stc1000p_version', value='_ovbsc')
+          label(for='stc1000p_version_3')  STC-1000+ OVBSC
+          br
+          input#stc1000p_version_4(type='radio', name='stc1000p_version', value='_rh')
+          label(for='stc1000p_version_4')  STC-1000+ RH
+          br
+        td#stc1000p_subversion_selector.show_version.show_version_minute(valign='top', style='display: none')
+          input#stc1000p_subversion_1(type='radio', name='stc1000p_subversion', value='', checked='')
+          label(for='stc1000p_subversion_1')  Vanilla version
+          br
+          input#stc1000p_subversion_2(type='radio', name='stc1000p_subversion', value='_probe2')
+          label(for='stc1000p_subversion_2')  Dual probe version
+          br
+          input#stc1000p_subversion_3(type='radio', name='stc1000p_subversion', value='_com')
+          label(for='stc1000p_subversion_3')  Communication version
+          br
+          input#stc1000p_subversion_4(type='radio', name='stc1000p_subversion', value='_fo433')
+          label(for='stc1000p_subversion_4')  Fine offset 433Mhz version
+          br
+    span#tempscale_selector.show_version.show_version_minute.show_version_ovbsc(style='display: none')
+      h3 Select temperature scale
+      select#tempscale(name='tempscale')
+        option(value='C', selected='') Celsius
+        option(value='F') Fahrenheit
+    br
+    .row
+      .column.column-12
+        .column.column-2.program
+          each prog in [0,1,2,3,4,5]
+              h3= 'Program' + prog + '(P' + prog + ')'
+              h5 Step: Temp / Duration
+              var setPointData = [
+                  {step: 0, sp: '19.0', d: '72'},
+                  {step: 1, sp: '19.0', d: '12'},
+                  {step: 2, sp: '21.0', d: '72'},
+                  {step: 3, sp: '21.0', d: '60'},
+                  {step: 4, sp: '1.0', d: '0'},
+                  {step: 5, sp: '0.0', d: '0'},
+                  {step: 6, sp: '0.0', d: '0'},
+                  {step: 7, sp: '0.0', d: '0'},
+                  {step: 8, sp: '0.0', d: '0'},
+                  {step: 9, sp: '0.0', d: '0'},
+              ];
+              each step in setPointData
+                  spId = 'sp0_' + step.step
+                  dId = 'dh0_' + step.step
+                  div
+                    span.step step.step:
+                        input.temperature.recalc(id=spId type='text', name=spId, maxlength='4', size='4', autocomplete='off', value=step.sp, title='Setpoint '+step)
+                        span.tscale °C
+                        input.duration.recalc(id=dId, type='text', name=dId, maxlength='3', size='3', autocomplete='off', value=step.d, title='Duration '+step)
+                        span.durscale  hr
+
+      br
+      input#downloadrhino(type='button', name='downloadino', value='Download sketch', onclick='download();', title='Generate sketch for download')
